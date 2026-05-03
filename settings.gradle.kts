@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "athaya"
+rootProject.name = "Perangkat Lembaga"
 include(":app")

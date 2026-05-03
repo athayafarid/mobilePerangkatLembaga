@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.athaya"
+    namespace = "com.example.perangkatlembaga"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.athaya"
+        applicationId = "com.example.perangkatlembaga"
         minSdk = 29
         targetSdk = 36
         versionCode = 1
