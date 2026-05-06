@@ -33,22 +33,38 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString()
-            val password = binding.etPassword.text.toString()
+            val usernameInput = binding.etEmail.text.toString().trim()
+            val passwordInput = binding.etPassword.text.toString().trim()
 
-            if (email == "admin@gmail.com" && password == "admin123") {
-                val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+            val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+            val registeredUser = sharedPref.getString("reg_username", "admin@gmail.com")
+            val registeredPass = sharedPref.getString("reg_password", "admin123")
+
+            if (usernameInput.isEmpty()) {
+                binding.etEmail.error = "Username tidak boleh kosong"
+                return@setOnClickListener
+            }
+
+            if (passwordInput.isEmpty()) {
+                binding.etPassword.error = "Password tidak boleh kosong"
+                return@setOnClickListener
+            }
+
+            if (usernameInput == registeredUser && passwordInput == registeredPass) {
                 with(sharedPref.edit()) {
                     putBoolean("isLogin", true)
                     apply()
                 }
 
-                // Ubah MainActivity menjadi BaseActivity agar masuk ke halaman dengan Bottom Navigation
                 startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             } else {
-                Toast.makeText(this, "Email atau Password Salah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Username atau Password Salah", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.tvRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }
