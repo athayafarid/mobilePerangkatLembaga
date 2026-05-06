@@ -17,7 +17,8 @@ class SplashActivity : AppCompatActivity() {
             val isLogin = sharedPref.getBoolean("isLogin", false)
 
             if (isLogin) {
-                startActivity(Intent(this, MainActivity::class.java))
+                // Arahkan ke BaseActivity (halaman dengan Bottom Navigation)
+                startActivity(Intent(this, BaseActivity::class.java))
             } else {
                 startActivity(Intent(this, LoginActivity::class.java))
             }

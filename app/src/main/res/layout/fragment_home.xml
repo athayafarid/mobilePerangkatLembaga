@@ -91,22 +91,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_launcher_foreground"
-                app:title="Dashboard Administrasi"
+                app:title="Admin"
                 app:titleTextColor="@color/black">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="16dp"
                         android:text="Muhammad Farid Athaya"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
-                </RelativeLayout>
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -134,7 +139,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ringkasan data kependudukan &amp; kelembagaan desa Home > Dashboard > Home"
+                    android:text="Ringkasan data kependudukan &amp; kelembagaan desa"
                     android:textColor="#757575"
                     android:textSize="12sp" />
 

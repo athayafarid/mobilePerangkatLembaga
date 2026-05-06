@@ -7,8 +7,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.perangkatlembaga.Home.HomeFragment
-import com.example.perangkatlembaga.Message.MessageFragment
-import com.example.perangkatlembaga.More.MoreFragment
 import com.example.perangkatlembaga.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
@@ -24,30 +22,33 @@ class BaseActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
-        replaceFragment(HomeFragment())
+        
+        if (savedInstanceState == null) {
+            replaceFragment(HomeFragment())
+        }
 
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> {
+                R.id.navigation_home -> {
                     replaceFragment(HomeFragment())
                     true
                 }
-                R.id.message -> {
-                    replaceFragment(MessageFragment())
+                R.id.navigation_about -> {
+                    replaceFragment(AboutFragment())
                     true
                 }
-                R.id.more -> {
-                    replaceFragment(MoreFragment())
+                R.id.navigation_profile -> {
+                    replaceFragment(ProfileFragment())
                     true
                 }
-                else ->false
+                else -> false
             }
         }
     }
+
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment)
-            //.addToBackStack(null) -> ini kita nonaktifkan agar saat back langsung keluar aplikasi
             .commit()
     }
 }

@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0F2F1">
+    android:background="#F0F4F8">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
-        android:alpha="0.2" />
+        android:alpha="0.1"
+        android:contentDescription="Background" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="12dp"
+        android:layout_margin="24dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,95 +32,80 @@
             android:baselineAligned="false"
             android:orientation="horizontal">
 
-            <!-- Left Side: Login Form -->
+            <!-- Sisi Kiri: Form Login -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="40dp">
+                android:padding="32dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:text="Welcome to"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textColor="#757575"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:text="Perangkat\nLembaga"
-                    android:textAlignment="center"
+                    android:lineSpacingExtra="-4dp"
                     android:textColor="#2962FF"
-                    android:textSize="32sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:text="Silahkan Login"
+                    android:layout_marginTop="4dp"
+                    android:text="Silakan Login"
                     android:textColor="#2962FF"
                     android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="Email"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-
-                <EditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/ic_launcher_background"
-                    android:hint="admin@gmail.com"
-                    android:inputType="textEmailAddress"
-                    android:padding="12dp"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Password"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-
-                <RelativeLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="24dp"
+                    android:hint="Email"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Password"
+                    app:passwordToggleEnabled="true"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@drawable/ic_launcher_background"
-                        android:hint="********"
-                        android:inputType="textPassword"
-                        android:padding="12dp"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tvTogglePassword"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="12dp"
-                        android:text="Tampilkan"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-                </RelativeLayout>
+                        android:inputType="textPassword"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvTogglePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="8dp"
+                    android:text="Tampilkan Password"
+                    android:textColor="#2962FF"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/btnLogin"
@@ -129,64 +115,38 @@
                     android:backgroundTint="#2962FF"
                     android:text="Login"
                     android:textAllCaps="false"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="8dp"
-                    android:text="Lupa password?"
-                    android:textColor="#2962FF"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
-                    android:text="Belum punya akun? Buat akun\nterlebih dahulu"
-                    android:textAlignment="center"
-                    android:textColor="#2962FF"
-                    android:textSize="14sp" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp" />
 
             </LinearLayout>
 
-            <!-- Right Side: Info -->
+            <!-- Sisi Kanan: Branding (Logo) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#F5F5F5"
+                android:layout_weight="0.8"
+                android:background="#F8F9FA"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="40dp"
-                android:visibility="visible">
+                android:padding="24dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:src="@drawable/ic_launcher_foreground"
-                    app:tint="#2962FF" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Sistem Informasi Perangkat\ndan Lembaga Desa"
-                    android:textAlignment="center"
-                    android:textColor="#D32F2F"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    app:tint="#2962FF"
+                    android:contentDescription="App Logo" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Platform digital untuk mengelola data perangkat desa, lembaga kemasyarakatan, serta struktur organisasi secara terintegrasi, akurat, dan transparan."
+                    android:text="Sistem Informasi\nPerangkat Desa"
                     android:textAlignment="center"
-                    android:textColor="#616161"
-                    android:textSize="14sp" />
+                    android:textColor="#D32F2F"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </LinearLayout>

@@ -28,7 +28,8 @@ class LoginActivity : AppCompatActivity() {
                 binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
                 binding.tvTogglePassword.text = "Tampilkan"
             }
-            binding.etPassword.setSelection(binding.etPassword.text.length)
+            // Perbaikan null safety
+            binding.etPassword.setSelection(binding.etPassword.text?.length ?: 0)
         }
 
         binding.btnLogin.setOnClickListener {
@@ -42,7 +43,8 @@ class LoginActivity : AppCompatActivity() {
                     apply()
                 }
 
-                startActivity(Intent(this, MainActivity::class.java))
+                // Ubah MainActivity menjadi BaseActivity agar masuk ke halaman dengan Bottom Navigation
+                startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Email atau Password Salah", Toast.LENGTH_SHORT).show()
