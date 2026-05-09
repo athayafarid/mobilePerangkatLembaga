@@ -134,7 +134,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ringkasan data kependudukan &amp; kelembagaan desa Home > Dashboard > Home"
+                    android:text="Ringkasan data kependudukan &amp; kelembagaan desa"
                     android:textColor="#757575"
                     android:textSize="12sp" />
 
@@ -255,7 +255,7 @@
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:shape="ring"
-                        android:text="Pertemuan 2"
+                        android:text="@string/btn_data_rt"
                         android:textAllCaps="false"
                         app:cornerRadius="24dp" />
 
@@ -265,7 +265,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:backgroundTint="#6A5ACD"
-                        android:text="Pertemuan 3"
+                        android:text="@string/btn_data_rw"
                         android:textAllCaps="false"
                         app:cornerRadius="24dp" />
 
@@ -275,7 +275,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:backgroundTint="#6A5ACD"
-                        android:text="Pertemuan 4"
+                        android:text="@string/btn_anggota_lembaga"
                         android:textAllCaps="false"
                         app:cornerRadius="24dp" />
 
@@ -285,7 +285,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:backgroundTint="#6A5ACD"
-                        android:text="Pertemuan 5"
+                        android:text="@string/btn_pertemuan_5"
                         android:textAllCaps="false"
                         app:cornerRadius="24dp" />
 
@@ -295,7 +295,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="24dp"
                         android:backgroundTint="#6A5ACD"
-                        android:text="Pertemuan 7"
+                        android:text="@string/btn_pertemuan_7"
                         android:textAllCaps="false"
                         app:cornerRadius="24dp" />
 
