@@ -12,7 +12,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
         android:alpha="0.1"
-        android:contentDescription="Background" />
+        android:contentDescription="@string/welcome_to" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -44,14 +44,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome to"
+                    android:text="@string/welcome_to"
                     android:textColor="#757575"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Perangkat\nLembaga"
+                    android:text="@string/login_perangkat_lembaga"
                     android:lineSpacingExtra="-4dp"
                     android:textColor="#2962FF"
                     android:textSize="28sp"
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Silakan Login"
+                    android:text="@string/please_login"
                     android:textColor="#2962FF"
                     android:textSize="14sp" />
 
@@ -69,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:hint="Email"
+                    android:hint="@string/hint_email"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -84,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Password"
+                    android:hint="@string/hint_password"
                     app:passwordToggleEnabled="true"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -102,18 +102,18 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginTop="8dp"
-                    android:text="Tampilkan Password"
+                    android:text="@string/show_password"
                     android:textColor="#2962FF"
                     android:textSize="12sp"
                     android:visibility="gone" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginTop="24dp"
                     android:backgroundTint="#2962FF"
-                    android:text="Login"
+                    android:text="@string/btn_login"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textStyle="bold"
@@ -131,7 +131,7 @@
 
             </LinearLayout>
 
-            <!-- Sisi Kanan: Branding (Logo) -->
+            <!-- Sisi Kanan: Branding -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -144,8 +144,8 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_launcher_foreground"
-                    app:tint="#2962FF"
+                    android:src="@drawable/logo_header"
+                    android:scaleType="fitCenter"
                     android:contentDescription="App Logo" />
 
                 <TextView

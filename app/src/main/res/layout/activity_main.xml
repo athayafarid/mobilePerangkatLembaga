@@ -21,7 +21,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_launcher_foreground"
+            android:src="@drawable/logo_header"
             app:tint="#FFC107" />
 
         <TextView
@@ -90,7 +90,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_launcher_foreground"
+                app:navigationIcon="@drawable/logo_header"
                 app:title="Dashboard Administrasi"
                 app:titleTextColor="@color/black">
 

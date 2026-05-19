@@ -27,4 +27,32 @@
     <string name="btn_anggota_lembaga">Anggota Lembaga</string>
     <string name="btn_pertemuan_5">Pertemuan 5</string>
     <string name="btn_pertemuan_7">Pertemuan 7</string>
+    <string name="btn_logout">Logout</string>
+
+    <!-- Dashboard Labels -->
+    <string name="dashboard_title">Dashboard Administrasi</string>
+    <string name="dashboard_desc">Ringkasan data kependudukan &amp; kelembagaan desa</string>
+    <string name="welcome_msg">👋 Selamat Datang, Muhammad Farid Athaya</string>
+    <string name="admin_online">Admin Online</string>
+    <string name="total_warga">Total Warga</string>
+    <string name="total_rt">Total RT</string>
+    <string name="val_warga">100</string>
+    <string name="val_rt">101</string>
+    <string name="learning_msg">Belajar Mobile itu Asyiik!</string>
+    <string name="sidebar_title">PERANGKAT DESA</string>
+    <string name="sidebar_dashboard">Dashboard</string>
+    <string name="sidebar_fitur">FITUR UTAMA</string>
+    <string name="label_admin">Admin</string>
+    <string name="user_full_name">Muhammad Farid Athaya</string>
+
+    <!-- Login Page -->
+    <string name="welcome_to">Welcome to</string>
+    <string name="login_perangkat_lembaga">Perangkat\nLembaga</string>
+    <string name="please_login">Silahkan Login</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="show_password">Tampilkan Password</string>
+    <string name="hide_password">Sembunyikan Password</string>
+    <string name="btn_login">Login</string>
+    <string name="forgot_password">Lupa password?</string>
 </resources>

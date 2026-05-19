@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.perangkatlembaga.Home.HomeFragment
+import com.example.perangkatlembaga.More.MoreFragment
 import com.example.perangkatlembaga.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
@@ -39,6 +40,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.navigation_profile -> {
                     replaceFragment(ProfileFragment())
+                    true
+                }
+                R.id.navigation_more -> {
+                    replaceFragment(MoreFragment())
                     true
                 }
                 else -> false

@@ -14,4 +14,9 @@
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_more"
         android:title="@string/menu_profile" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_add"
+        android:title="Lainnya" />
 </menu>
