@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F9FE">
@@ -70,7 +71,7 @@
                 android:textColor="#424242" />
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Features Section -->
+        <!-- Features Section (NOW USING RECYCLERVIEW) -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,21 +81,12 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFeatures"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="@color/white">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@string/about_features"
-                android:lineSpacingExtra="6dp"
-                android:textColor="#424242" />
-        </com.google.android.material.card.MaterialCardView>
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@android:layout/simple_list_item_1" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
