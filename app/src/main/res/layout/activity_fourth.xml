@@ -15,78 +15,65 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="Fourth Activity"
+            app:title="Anggota Lembaga (Room)"
             app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Button Alert Dialog -->
-        <Button
-            android:id="@+id/btnShowAlertDialog"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/inputContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Alert Dialog"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/cardView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"/>
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Card View -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            app:layout_constraintTop_toBottomOf="@id/btnShowAlertDialog"
-            app:layout_constraintBottom_toTopOf="@id/btnBack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <!-- Isi Card -->
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/btn1"
+                android:hint="Nama Anggota">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNamaAnggota"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tombol 1"/>
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
-                    android:id="@+id/btnShowSnackbar"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Jabatan">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJabatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Snackbar"
-                    android:layout_marginTop="12dp"/>
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveAnggota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Tambah Anggota"
+                app:cornerRadius="8dp" />
+        </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Button Kembali -->
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kembali"
-            app:layout_constraintTop_toBottomOf="@id/cardView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAnggota"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="24dp"/>
+            app:layout_constraintTop_toBottomOf="@id/inputContainer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

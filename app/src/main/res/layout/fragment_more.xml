@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pengaturan &amp; Informasi"
+        android:text="Lainnya"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -22,14 +22,40 @@
         app:cardCornerRadius="16dp"
         app:cardElevation="2dp">
 
-        <ListView
-            android:id="@+id/lvSettings"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="#EEEEEE"
-            android:dividerHeight="1dp"
-            android:padding="8dp" />
+            android:orientation="vertical"
+            android:padding="8dp">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCatFact"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fakta Kucing Hari Ini"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_message"
+                app:iconTint="#6A5ACD" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAboutApp"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tentang Aplikasi"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_info"
+                app:iconTint="#6A5ACD" />
+
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

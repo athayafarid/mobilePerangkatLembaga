@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.perangkatlembaga.Message.tutorial.TutorialMessageActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,12 +16,18 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
             val isLogin = sharedPref.getBoolean("isLogin", false)
+            val onboardingFinished = sharedPref.getBoolean("onboardingFinished", false)
 
-            if (isLogin) {
-                // Arahkan ke BaseActivity (halaman dengan Bottom Navigation)
-                startActivity(Intent(this, BaseActivity::class.java))
-            } else {
-                startActivity(Intent(this, LoginActivity::class.java))
+            when {
+                isLogin -> {
+                    startActivity(Intent(this, BaseActivity::class.java))
+                }
+                !onboardingFinished -> {
+                    startActivity(Intent(this, TutorialMessageActivity::class.java))
+                }
+                else -> {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
             }
             finish()
         }, 2000) // 2 seconds delay

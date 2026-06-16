@@ -27,6 +27,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
+        android:id="@+id/tvProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -36,10 +37,11 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tvProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Android Developer"
+        android:text="admin@gmail.com"
         android:textColor="#6A5ACD"
         android:textStyle="bold" />
 
@@ -90,5 +92,15 @@
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Keluar Akun"
+        android:textColor="#F44336"
+        app:rippleColor="#20F44336" />
 
 </LinearLayout>

@@ -11,8 +11,8 @@ import com.example.perangkatlembaga.databinding.ActivityMainBinding
 import com.example.perangkatlembaga.Home.pertemuan2.SecondActivity
 import com.example.perangkatlembaga.Home.pertemuan3.ThirdActivity
 import com.example.perangkatlembaga.Home.pertemuan4.FourthActivity
+import com.example.perangkatlembaga.Home.pertemuan5.FifthActivity
 import com.example.perangkatlembaga.Home.pertemuan7.SevenActivity
-import com.example.perangkatlembaga.pertemuan_5.FifthActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F9FA"
-    tools:context=".pertemuan_5.FifthActivity">
+    tools:context=".Home.pertemuan5.FifthActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -20,8 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:titleTextColor="@android:color/white"
-            app:subtitleTextColor="#D1D1D1"/>
+            app:titleTextColor="@android:color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -36,110 +35,63 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+            <!-- API Result Card (Task 4) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fakta Kucing Hari Ini (API)"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="12dp"/>
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:padding="20dp"
                     android:gravity="center">
 
-                    <TextView
+                    <ProgressBar
+                        android:id="@+id/progressBar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Akses Cepat"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:textColor="?attr/colorPrimary"
-                        android:layout_marginBottom="12dp"/>
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvCatFact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Klik tombol di bawah untuk mengambil fakta..."
+                        android:textAlignment="center"
+                        android:textColor="#424242"
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="4dp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnWebView"
-                        style="@style/Widget.MaterialComponents.Button.Icon"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:text="Buka Web Merdeka"
-                        android:textAllCaps="false"
-                        app:cornerRadius="12dp"
-                        app:icon="@drawable/ic_add"
-                        app:iconGravity="textStart"/>
+                        android:id="@+id/btnFetchFact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Ambil Fakta Baru"
+                        app:cornerRadius="12dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Artikel Untuk Anda"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#212121"
-                android:layout_marginBottom="16dp"/>
-
-            <com.google.android.material.card.MaterialCardView
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWebView"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Update Terbaru Project Athaya"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="?attr/colorPrimary"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Berhasil mengimplementasikan WebView dan View Binding dengan struktur folder yang lebih rapi."
-                        android:textColor="#616161"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mengenal Coordinator Layout"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="?attr/colorPrimary"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Fitur scroll yang membuat toolbar bisa menghilang otomatis saat user melakukan scroll ke bawah."
-                        android:textColor="#616161"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                android:layout_height="56dp"
+                android:text="Buka Web Merdeka"
+                app:cornerRadius="12dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -1,15 +1,17 @@
-package com.example.perangkatlembaga.pertemuan_5
+package com.example.perangkatlembaga.Home.pertemuan5
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-// Pastikan import binding merujuk ke package perangkatlembaga
-import com.example.perangkatlembaga.databinding.ActivityFifthBinding
-// Import R dari package project kamu sendiri
+import androidx.lifecycle.lifecycleScope
 import com.example.perangkatlembaga.R
+import com.example.perangkatlembaga.data.api.CatFactApiClient
+import com.example.perangkatlembaga.databinding.ActivityFifthBinding
+import kotlinx.coroutines.launch
 
 class FifthActivity : AppCompatActivity() {
 
@@ -17,30 +19,45 @@ class FifthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inisialisasi View Binding
         binding = ActivityFifthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mengaktifkan toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Activity Fifth"
-            subtitle = "Ini adalah subtitle"
+            title = "Pertemuan 5: Retrofit"
             setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
-            // Pastikan kamu punya file ic_arrow_back di folder res/drawable
-            setHomeAsUpIndicator(R.drawable.ic_add)
         }
 
-        // Navigasi ke WebViewActivity
+        binding.btnFetchFact.setOnClickListener {
+            fetchCatFact()
+        }
+
         binding.btnWebView.setOnClickListener {
             val intent = Intent(this, WebViewActivity::class.java)
             startActivity(intent)
         }
     }
 
+    private fun fetchCatFact() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.tvCatFact.visibility = View.GONE
+
+        lifecycleScope.launch {
+            try {
+                val response = CatFactApiClient.apiService.getCatFact()
+                binding.tvCatFact.text = response.fact
+                binding.tvCatFact.visibility = View.VISIBLE
+            } catch (e: Exception) {
+                Toast.makeText(this@FifthActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                binding.tvCatFact.text = "Gagal mengambil data."
+                binding.tvCatFact.visibility = View.VISIBLE
+            } finally {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Memastikan file menu ada di res/menu/main_menu.xml
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
@@ -49,14 +66,6 @@ class FifthActivity : AppCompatActivity() {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
-                true
-            }
-            R.id.action_search -> {
-                Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.action_settings -> {
-                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

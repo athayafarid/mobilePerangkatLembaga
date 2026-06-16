@@ -7,85 +7,103 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.perangkatlembaga.Home.pertemuan2.SecondActivity
 import com.example.perangkatlembaga.Home.pertemuan3.ThirdActivity
 import com.example.perangkatlembaga.Home.pertemuan4.FourthActivity
-import com.example.perangkatlembaga.Home.pertemuan7.SevenActivity
 import com.example.perangkatlembaga.LoginActivity
 import com.example.perangkatlembaga.databinding.FragmentHomeBinding
-import com.example.perangkatlembaga.pertemuan_5.FifthActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val sharedPref = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
-        // Pertemuan 2 -> SecondActivity
-        binding.btnPertemuan2.setOnClickListener {
+        // Setup News RecyclerView
+        binding.rvNews.layoutManager = LinearLayoutManager(requireContext())
+        
+        // Initial Fetch News
+        loadNews()
+
+        // Implementasi Klik Refresh untuk Berita
+        binding.btnRefreshNews.setOnClickListener {
+            loadNews()
+        }
+
+        // Navigasi Fitur
+        setupNavigation(sharedPref)
+    }
+
+    private fun loadNews() {
+        binding.pbNews.visibility = View.VISIBLE
+        lifecycleScope.launch {
+            try {
+                // Mengambil berita terbaru dari API
+                val response = NewsApiClient.apiService.getNews()
+                if (response.success == true) {
+                    // Gunakan null check untuk response.data
+                    binding.rvNews.adapter = NewsAdapter(response.data ?: emptyList())
+                } else {
+                    Toast.makeText(requireContext(), "Gagal memuat berita", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show()
+            } finally {
+                binding.pbNews.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun setupNavigation(sharedPref: android.content.SharedPreferences) {
+        binding.btnDataRT.setOnClickListener {
             startActivity(Intent(requireContext(), SecondActivity::class.java))
         }
-
-        // Pertemuan 3 -> ThirdActivity
-        binding.btnPertemuan3.setOnClickListener {
+        
+        binding.btnDataRW.setOnClickListener {
             startActivity(Intent(requireContext(), ThirdActivity::class.java))
         }
-
-        // Pertemuan 4 -> FourthActivity
-        binding.btnPertemuan4.setOnClickListener {
-            val intent = Intent(requireContext(), FourthActivity::class.java)
-            intent.putExtra("name", "Politeknik Caltex Riau")
-            intent.putExtra("from", "Rumbai")
-            intent.putExtra("age", 25)
+        
+        binding.btnAnggota.setOnClickListener {
+            val intent = Intent(requireContext(), FourthActivity::class.java).apply {
+                putExtra("name", "Lembaga Desa")
+                putExtra("from", "Kantor Desa")
+                putExtra("age", 0)
+            }
             startActivity(intent)
         }
 
-        // Pertemuan 5 -> FifthActivity
-        binding.btnPertemuan5.setOnClickListener {
-            startActivity(Intent(requireContext(), FifthActivity::class.java))
-        }
-
-        // Pertemuan 7 -> SevenActivity (New Package)
-        binding.btnPertemuan7.setOnClickListener {
-            startActivity(Intent(requireContext(), SevenActivity::class.java))
-        }
-
-        // Logout Button
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Konfirmasi Logout")
-                .setMessage("Apakah Anda yakin ingin keluar?")
-                .setPositiveButton("Ya") { dialog, _ ->
-                    dialog.dismiss()
-
-                    with(sharedPref.edit()) {
-                        putBoolean("isLogin", false)
-                        apply()
-                    }
+                .setTitle("Logout")
+                .setMessage("Yakin ingin keluar?")
+                .setPositiveButton("Ya") { _, _ ->
+                    sharedPref.edit().putBoolean("isLogin", false).apply()
                     startActivity(Intent(requireContext(), LoginActivity::class.java))
                     requireActivity().finish()
                 }
-                .setNegativeButton("Batal") { dialog, _ ->
-                    dialog.dismiss()
-                }
+                .setNegativeButton("Batal", null)
                 .show()
         }
-
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
-
