@@ -1,32 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0052CC">
+    android:background="@drawable/bg_splash_gradient">
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="200dp"
+    <!-- Container untuk Logo dan Teks di Tengah -->
+    <LinearLayout
+        android:id="@+id/logoContainer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_header"
-        android:scaleType="fitCenter"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Splash Logo" />
+        app:layout_constraintVertical_bias="0.45">
 
-    <TextView
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="180dp"
+            android:layout_height="64dp"
+            android:src="@drawable/logo_header"
+            android:scaleType="fitCenter"
+            android:contentDescription="Splash Logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.03"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+
+    <!-- Loading Spinner di Bagian Bawah -->
+    <ProgressBar
+        android:id="@+id/pbSplash"
+        style="?android:attr/progressBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:indeterminateTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tvCopyright"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Teks Hak Cipta di Bagian Paling Bawah -->
+    <TextView
+        android:id="@+id/tvCopyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="© 2026 Perangkat Desa | Premium Version"
+        android:textColor="#8E8C9A"
+        android:textSize="11sp"
+        android:letterSpacing="0.02"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

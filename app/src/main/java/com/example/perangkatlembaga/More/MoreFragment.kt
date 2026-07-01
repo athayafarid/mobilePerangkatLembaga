@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.perangkatlembaga.AboutFragment
+import com.example.perangkatlembaga.NoteFragment
 import com.example.perangkatlembaga.R
 import com.example.perangkatlembaga.data.api.CatFactApiClient
 import com.example.perangkatlembaga.databinding.FragmentMoreBinding
@@ -37,8 +38,26 @@ class MoreFragment : Fragment() {
 
         // Membuka AboutFragment saat tombol diklik
         binding.btnAboutApp.setOnClickListener {
+            val containerId = if (requireActivity().findViewById<View>(R.id.fragmentContainer) != null) {
+                R.id.fragmentContainer
+            } else {
+                R.id.fragment_container
+            }
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, AboutFragment())
+                .replace(containerId, AboutFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        // Membuka NoteFragment saat tombol diklik
+        binding.btnNotes.setOnClickListener {
+            val containerId = if (requireActivity().findViewById<View>(R.id.fragmentContainer) != null) {
+                R.id.fragmentContainer
+            } else {
+                R.id.fragment_container
+            }
+            parentFragmentManager.beginTransaction()
+                .replace(containerId, NoteFragment())
                 .addToBackStack(null)
                 .commit()
         }

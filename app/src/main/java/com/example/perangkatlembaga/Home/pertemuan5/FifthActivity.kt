@@ -24,7 +24,7 @@ class FifthActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Pertemuan 5: Retrofit"
+            title = "Portal Web & Layanan Desa"
             setDisplayHomeAsUpEnabled(true)
         }
 

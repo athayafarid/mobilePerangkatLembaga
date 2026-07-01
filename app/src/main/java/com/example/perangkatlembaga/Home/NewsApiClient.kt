@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object NewsApiClient {
-    private const val BASE_URL = "https://berita-indo-api.vercel.app/"
+    private const val BASE_URL = "https://berita-indo-api-next.vercel.app/api/"
 
     val apiService: NewsApiService by lazy {
         Retrofit.Builder()

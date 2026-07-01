@@ -31,8 +31,8 @@
     <string name="btn_data_rt">Data RT</string>
     <string name="btn_data_rw">Data RW</string>
     <string name="btn_anggota_lembaga">Anggota Lembaga</string>
-    <string name="btn_pertemuan_5">Pertemuan 5</string>
-    <string name="btn_pertemuan_7">Pertemuan 7</string>
+    <string name="btn_pertemuan_5">Portal &amp; Web Desa</string>
+    <string name="btn_pertemuan_7">Panduan &amp; Visi Misi</string>
     <string name="btn_logout">Logout</string>
     <string name="btn_refresh">Perbarui</string>
     <string name="btn_lanjut">Lanjut</string>

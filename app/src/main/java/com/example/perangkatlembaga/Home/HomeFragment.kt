@@ -56,14 +56,13 @@ class HomeFragment : Fragment() {
             try {
                 // Mengambil berita terbaru dari API
                 val response = NewsApiClient.apiService.getNews()
-                if (response.success == true) {
-                    // Gunakan null check untuk response.data
-                    binding.rvNews.adapter = NewsAdapter(response.data ?: emptyList())
+                if (response.data != null) {
+                    binding.rvNews.adapter = NewsAdapter(response.data)
                 } else {
                     Toast.makeText(requireContext(), "Gagal memuat berita", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Gagal memuat berita", Toast.LENGTH_SHORT).show()
             } finally {
                 binding.pbNews.visibility = View.GONE
             }

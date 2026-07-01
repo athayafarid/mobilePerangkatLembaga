@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F8F9FE"
     tools:context=".Home.pertemuan7.SevenActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,49 +15,26 @@
         android:background="#6A5ACD"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Halaman Seventh" />
+        app:title="Panduan &amp; Visi Misi" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- TabLayout Premium untuk Navigasi Tab -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:tabTextColor="#8E8C9A"
+        app:tabSelectedTextColor="#6A5ACD"
+        app:tabIndicatorColor="#6A5ACD"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        android:background="@color/white"
+        app:elevation="4dp" />
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnFragment2" />
-
-        <Button
-            android:id="@+id/btnFragment1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fragment 1"
-            app:layout_constraintBottom_toBottomOf="@+id/btnFragment2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnFragment2" />
-
-        <Button
-            android:id="@+id/btnFragment2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:text="Fragment 2"
-            app:layout_constraintEnd_toStartOf="@+id/btnFragment3"
-            app:layout_constraintStart_toEndOf="@+id/btnFragment1"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnFragment3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fragment 3"
-            app:layout_constraintBottom_toBottomOf="@+id/btnFragment2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnFragment2" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Container Fragmen Aktif -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

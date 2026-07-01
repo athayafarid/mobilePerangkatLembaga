@@ -55,6 +55,22 @@
                 app:icon="@drawable/ic_info"
                 app:iconTint="#6A5ACD" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNotes"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Catatan Agenda"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_message"
+                app:iconTint="#6A5ACD" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

@@ -72,17 +72,24 @@ class MainActivity : AppCompatActivity() {
 
         // --- Reminder Feature ---
         binding.btnSetReminder.setOnClickListener {
+            val agendaName = binding.etReminderContent.text.toString().trim()
             val minutesStr = binding.etReminderMinutes.text.toString()
+            
+            if (agendaName.isEmpty()) {
+                Toast.makeText(this, "Masukkan nama agenda", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            
             if (minutesStr.isNotEmpty()) {
                 val minutes = minutesStr.toLong()
-                setReminder(minutes)
+                setReminder(minutes, agendaName)
                 
                 // Feedback notifikasi langsung
                 val intent = Intent(this, MainActivity::class.java)
                 NotificationHelper.showNotification(
                     this,
                     "Pengingat Disetel",
-                    "Aplikasi akan mengingatkan agenda desa dalam $minutes menit.",
+                    "Aplikasi akan mengingatkan agenda '$agendaName' dalam $minutes menit.",
                     intent
                 )
             } else {
@@ -117,8 +124,10 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 val response = NewsApiClient.apiService.getNews()
-                if (response.success == true) {
-                    binding.rvNews.adapter = NewsAdapter(response.data ?: emptyList())
+                if (response.data != null) {
+                    binding.rvNews.adapter = NewsAdapter(response.data)
+                } else {
+                    Toast.makeText(this@MainActivity, "Gagal memuat berita", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 Toast.makeText(this@MainActivity, "Gagal memuat berita", Toast.LENGTH_SHORT).show()
@@ -128,11 +137,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setReminder(minutes: Long) {
+    private fun setReminder(minutes: Long, agendaName: String) {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, ReminderReceiver::class.java).apply {
-            putExtra("title", "Agenda Perangkat Desa")
-            putExtra("message", "Waktunya memeriksa laporan rutin atau data terbaru!")
+            putExtra("title", "Pengingat Agenda")
+            putExtra("message", agendaName)
         }
         val pendingIntent = PendingIntent.getBroadcast(
             this, 100, intent, 
@@ -141,7 +150,7 @@ class MainActivity : AppCompatActivity() {
         
         val triggerTime = System.currentTimeMillis() + (minutes * 60 * 1000)
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent)
-        Toast.makeText(this, "Pengingat aktif ($minutes menit lagi)", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Pengingat aktif: '$agendaName' ($minutes menit lagi)", Toast.LENGTH_SHORT).show()
     }
 
     private fun setupBottomNavigation() {
