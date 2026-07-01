@@ -20,7 +20,8 @@ class SplashActivity : AppCompatActivity() {
 
             when {
                 isLogin -> {
-                    startActivity(Intent(this, BaseActivity::class.java))
+                    // Diubah ke MainActivity
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
                 !onboardingFinished -> {
                     startActivity(Intent(this, TutorialMessageActivity::class.java))
@@ -30,6 +31,6 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
             finish()
-        }, 2000) // 2 seconds delay
+        }, 2000)
     }
 }

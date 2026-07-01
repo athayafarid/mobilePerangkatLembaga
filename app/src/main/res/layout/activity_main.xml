@@ -5,79 +5,9 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0F1E">
+    android:background="#0A0F1E"
+    tools:context=".MainActivity">
 
-    <!-- Sidebar Navigation View -->
-    <LinearLayout
-        android:id="@+id/sidebar"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#12192C"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo_header"
-            app:tint="#FFC107"
-            android:contentDescription="App Logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="@string/sidebar_title"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginVertical="24dp"
-            android:background="#242D45" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#5C6BC0"
-            android:padding="12dp"
-            android:text="@string/sidebar_dashboard"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/sidebar_fitur"
-            android:textColor="#546E7A"
-            android:textSize="10sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/btn_data_rw"
-            android:textColor="#B0BEC5"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/btn_data_rt"
-            android:textColor="#B0BEC5"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-    <!-- Main Content -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -85,235 +15,314 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:background="@color/white"
+            app:elevation="0dp">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/logo_header"
-                app:title="@string/dashboard_title"
-                app:titleTextColor="@color/black">
+                android:layout_height="?attr/actionBarSize">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp">
 
-                    <TextView
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/logo_header"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="@string/app_name" />
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="16dp"
-                        android:text="@string/user_full_name"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-                </RelativeLayout>
-            </androidx.appcompat.widget.Toolbar>
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_admin"
+                            android:textColor="#6A5ACD"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            tools:ignore="SmallSp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_full_name"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F8F9FE"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
+            <!-- Dashbord / Home Content -->
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/homeContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:layout_height="0dp"
+                android:background="#F8F9FE"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_nav_card"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dashboard_title"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dashboard_desc"
-                    android:textColor="#757575"
-                    android:textSize="12sp" />
-
-                <!-- Welcome Card -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    app:cardBackgroundColor="#6A5ACD"
-                    app:cardCornerRadius="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="24dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/welcome_msg"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:background="#4CAF50"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="@string/admin_online"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- Stats Grid -->
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:columnCount="2"
-                    android:useDefaultMargins="true">
-
-                    <!-- Card Total Warga -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        app:cardCornerRadius="12dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="16dp">
-                            <View android:layout_width="48dp" android:layout_height="48dp" android:background="#4FC3F7" />
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/total_warga" android:textSize="12sp"/>
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/val_warga" android:textSize="24sp" android:textStyle="bold"/>
-                            </LinearLayout>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Card Total RT -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        app:cardCornerRadius="12dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="16dp">
-                            <View android:layout_width="48dp" android:layout_height="48dp" android:background="#FFA000" />
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/total_rt" android:textSize="12sp"/>
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/val_rt" android:textSize="24sp" android:textStyle="bold"/>
-                            </LinearLayout>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                </GridLayout>
-
-                <!-- Navigation Buttons -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
+                    <!-- Welcome Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="#6A5ACD"
+                        app:cardCornerRadius="24dp"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="24dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/welcome_msg"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/admin_online"
+                                android:textColor="#E0E0E0" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Reminder Section -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="2dp"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_set_reminder"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:hint="@string/hint_reminder_minutes">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/etReminderMinutes"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSetReminder"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/btn_activate_reminder"
+                                app:cornerRadius="8dp"
+                                app:backgroundTint="#6A5ACD" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Berita Section -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/label_latest_news"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnRefreshNews"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="@string/btn_refresh"
+                            android:textColor="#6A5ACD"
+                            app:icon="@drawable/ic_add"
+                            app:iconTint="#6A5ACD" />
+                    </RelativeLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pbNews"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvNews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_news" />
+
+                    <!-- Stats & Nav -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="24dp"
-                        android:text="@string/learning_msg"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/btnPertemuan2"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
                         android:layout_marginBottom="12dp"
-                        android:backgroundTint="#6A5ACD"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:shape="ring"
+                        android:text="@string/label_layanan_desa"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDataRT"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/btn_data_rt"
                         android:textAllCaps="false"
-                        app:cornerRadius="24dp" />
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#6A5ACD" />
 
-                    <Button
-                        android:id="@+id/btnPertemuan3"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:backgroundTint="#6A5ACD"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDataRW"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/btn_data_rw"
                         android:textAllCaps="false"
-                        app:cornerRadius="24dp" />
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#6A5ACD" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnPertemuan4"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:backgroundTint="#6A5ACD"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/btn_anggota_lembaga"
                         android:textAllCaps="false"
-                        app:cornerRadius="24dp" />
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#6A5ACD" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnPertemuan5"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:backgroundTint="#6A5ACD"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/btn_pertemuan_5"
                         android:textAllCaps="false"
-                        app:cornerRadius="24dp" />
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#6A5ACD" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnPertemuan7"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="24dp"
-                        android:backgroundTint="#6A5ACD"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/btn_pertemuan_7"
                         android:textAllCaps="false"
-                        app:cornerRadius="24dp" />
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#6A5ACD" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnLogout"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#D32F2F"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="16dp"
                         android:text="@string/btn_logout"
-                        android:textAllCaps="false"
-                        app:cornerRadius="24dp" />
+                        android:textColor="#D32F2F"
+                        app:strokeColor="#D32F2F"
+                        app:cornerRadius="12dp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
 
                 </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
 
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+            <!-- Wadah Fragment (About, Profile, More) -->
+            <FrameLayout
+                android:id="@+id/fragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_nav_card"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Bottom Navigation -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/bottom_nav_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_nav_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:itemIconTint="@color/selector_nav_color"
+                    app:itemTextColor="@color/selector_nav_color"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/bottom_nav_menu" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Sidebar Navigation View -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#12192C" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

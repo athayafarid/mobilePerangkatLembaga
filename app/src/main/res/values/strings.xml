@@ -16,6 +16,8 @@
     <string name="user_full_name">Muhammad Farid Athaya</string>
     <string name="admin_online">Admin Online</string>
     <string name="learning_msg">Belajar Mobile itu Asyiik!</string>
+    <string name="label_admin">Admin</string>
+    <string name="label_layanan_desa">Layanan Desa</string>
 
     <!-- Bottom Navigation -->
     <string name="menu_home">Beranda</string>
@@ -23,7 +25,7 @@
     <string name="menu_about">Tentang</string>
     <string name="menu_profile">Profil</string>
     <string name="menu_more">Lainnya</string>
-    <string name="menu_tutorial">Tutorial</string>
+    <string name="menu_tutorial">Tutorial Penggunaan</string>
 
     <!-- Buttons -->
     <string name="btn_data_rt">Data RT</string>
@@ -32,15 +34,15 @@
     <string name="btn_pertemuan_5">Pertemuan 5</string>
     <string name="btn_pertemuan_7">Pertemuan 7</string>
     <string name="btn_logout">Logout</string>
-    <string name="btn_refresh">Perbarui Berita</string>
+    <string name="btn_refresh">Perbarui</string>
     <string name="btn_lanjut">Lanjut</string>
     <string name="btn_ayo_mulai">Ayo Mulai</string>
+    <string name="btn_activate_reminder">Aktifkan Pengingat</string>
 
-    <!-- Stats -->
-    <string name="total_warga">Total Warga</string>
-    <string name="total_rt">Total RT</string>
-    <string name="val_warga">100</string>
-    <string name="val_rt">101</string>
+    <!-- Reminder Section -->
+    <string name="label_set_reminder">Setel Pengingat Agenda</string>
+    <string name="hint_reminder_minutes">Menit dari sekarang</string>
+    <string name="label_latest_news">Berita Desa Terbaru</string>
 
     <!-- Login & Onboarding -->
     <string name="welcome_to">Selamat Datang di</string>
@@ -53,8 +55,7 @@
 
     <!-- About & Profile -->
     <string name="about_title">Bina Desa: Perangkat Lembaga</string>
-    <string name="about_description">Aplikasi ini dirancang untuk memudahkan administrasi desa secara digital, mendukung transparansi dan efisiensi pelayanan publik.</string>
-    <string name="about_features">Fitur Utama:\n- Manajemen Data Lembaga\n- Komunikasi Real-time\n- Pelaporan Kegiatan</string>
+    <string name="about_description">Aplikasi ini dirancang untuk memudahkan administrasi desa secara digital.</string>
     <string name="profile_id">NIM: 123456789</string>
     <string name="profile_major">Teknik Informatika</string>
 </resources>
