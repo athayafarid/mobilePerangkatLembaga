@@ -188,13 +188,26 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnPertemuan7"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="60dp"
-                            android:layout_columnSpan="2"
+                            android:layout_columnWeight="1"
                             android:layout_margin="4dp"
                             android:text="@string/btn_pertemuan_7"
                             android:textAllCaps="false"
                             app:icon="@drawable/ic_more"
+                            app:iconGravity="textStart"
+                            app:cornerRadius="12dp"
+                            app:backgroundTint="#6A5ACD" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnScanner"
+                            android:layout_width="0dp"
+                            android:layout_height="60dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="4dp"
+                            android:text="Scan &amp; QR Desa"
+                            android:textAllCaps="false"
+                            app:icon="@drawable/ic_notification"
                             app:iconGravity="textStart"
                             app:cornerRadius="12dp"
                             app:backgroundTint="#6A5ACD" />
@@ -241,7 +254,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:hint="@string/hint_reminder_minutes">
+                                android:hint="@string/hint_reminder_minutes"
+                                app:suffixText="menit"
+                                app:helperText="Contoh: 10">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/etReminderMinutes"

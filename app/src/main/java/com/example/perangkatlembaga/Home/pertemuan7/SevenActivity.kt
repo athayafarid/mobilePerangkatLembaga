@@ -3,9 +3,12 @@ package com.example.perangkatlembaga.Home.pertemuan7
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.perangkatlembaga.R
 import com.example.perangkatlembaga.databinding.ActivitySevenBinding
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class SevenActivity : AppCompatActivity() {
 
@@ -24,34 +27,46 @@ class SevenActivity : AppCompatActivity() {
             setDisplayShowHomeEnabled(true)
         }
 
-        // Setup TabLayout Tabs
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Visi Misi"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Tugas & Fungsi"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Kontak Layanan"))
+        // Setup ViewPager2 dengan FragmentStateAdapter
+        val pagerAdapter = ScreenSlidePagerAdapter(this)
+        binding.viewPager.adapter = pagerAdapter
 
-        // Load Visi Misi Fragment by default (so it is not blank initially)
-        if (savedInstanceState == null) {
-            replaceFragment(SatuFragment())
-        }
-
-        // Handle Tab Selection
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                when (tab.position) {
-                    0 -> replaceFragment(SatuFragment())
-                    1 -> replaceFragment(DuaFragment())
-                    2 -> replaceFragment(TigaFragment())
+        // Setup TabLayoutMediator untuk menyelaraskan TabLayout + ViewPager2
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "Visi Misi"
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_info)
+                }
+                1 -> {
+                    tab.text = "Tugas & Fungsi"
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_more)
+                }
+                2 -> {
+                    tab.text = "Kontak Layanan"
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_message)
+                    // Menerapkan Kustomisasi Tab Badge sesuai kriteria checklist
+                    val badge = tab.orCreateBadge
+                    badge.number = 5
+                    badge.backgroundColor = ContextCompat.getColor(this, android.R.color.holo_red_dark)
                 }
             }
-            override fun onTabUnselected(tab: TabLayout.Tab) {}
-            override fun onTabReselected(tab: TabLayout.Tab) {}
-        })
+        }.attach()
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, fragment)
-            .commit()
+    // Adapter ViewPager2 menggunakan FragmentStateAdapter
+    private inner class ScreenSlidePagerAdapter(activity: AppCompatActivity) :
+        FragmentStateAdapter(activity) {
+        override fun getItemCount(): Int = 3
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 -> SatuFragment()
+                1 -> DuaFragment()
+                2 -> TigaFragment()
+                else -> SatuFragment()
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

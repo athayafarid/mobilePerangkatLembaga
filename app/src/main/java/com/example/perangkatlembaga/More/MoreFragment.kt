@@ -38,26 +38,16 @@ class MoreFragment : Fragment() {
 
         // Membuka AboutFragment saat tombol diklik
         binding.btnAboutApp.setOnClickListener {
-            val containerId = if (requireActivity().findViewById<View>(R.id.fragmentContainer) != null) {
-                R.id.fragmentContainer
-            } else {
-                R.id.fragment_container
-            }
             parentFragmentManager.beginTransaction()
-                .replace(containerId, AboutFragment())
+                .replace(R.id.fragmentContainer, AboutFragment())
                 .addToBackStack(null)
                 .commit()
         }
 
         // Membuka NoteFragment saat tombol diklik
         binding.btnNotes.setOnClickListener {
-            val containerId = if (requireActivity().findViewById<View>(R.id.fragmentContainer) != null) {
-                R.id.fragmentContainer
-            } else {
-                R.id.fragment_container
-            }
             parentFragmentManager.beginTransaction()
-                .replace(containerId, NoteFragment())
+                .replace(R.id.fragmentContainer, NoteFragment())
                 .addToBackStack(null)
                 .commit()
         }

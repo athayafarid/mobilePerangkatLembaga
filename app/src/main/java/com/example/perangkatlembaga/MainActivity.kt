@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnPertemuan4.setOnClickListener { startActivity(Intent(this, FourthActivity::class.java)) }
         binding.btnPertemuan5.setOnClickListener { startActivity(Intent(this, FifthActivity::class.java)) }
         binding.btnPertemuan7.setOnClickListener { startActivity(Intent(this, SevenActivity::class.java)) }
+        binding.btnScanner.setOnClickListener { startActivity(Intent(this, ScannerActivity::class.java)) }
 
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(this)

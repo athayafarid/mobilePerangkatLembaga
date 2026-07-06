@@ -90,8 +90,55 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="Buka Web Merdeka"
+                android:text="Buka Portal Layanan Publik"
                 app:cornerRadius="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Dokumentasi Kegiatan Desa"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- ChipGroup untuk Mengatur Mode Layout RecyclerView -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgPicsumLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:singleSelection="true"
+                app:checkedChip="@+id/chipVertical">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipVertical"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vertikal" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipHorizontal"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Horizontal" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipGrid"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grid" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- RecyclerView dengan nestedScrollingEnabled="false" untuk mengatasi scroll issue di NestedScrollView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPicsum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

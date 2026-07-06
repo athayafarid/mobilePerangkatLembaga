@@ -19,18 +19,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvTogglePassword.setOnClickListener {
-            isPasswordVisible = !isPasswordVisible
-            if (isPasswordVisible) {
-                binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                binding.tvTogglePassword.text = "Sembunyikan"
-            } else {
-                binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
-                binding.tvTogglePassword.text = "Tampilkan"
-            }
-            // Perbaikan null safety
-            binding.etPassword.setSelection(binding.etPassword.text?.length ?: 0)
-        }
+
 
         binding.btnLogin.setOnClickListener {
             val usernameInput = binding.etEmail.text.toString().trim()
@@ -56,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
                     apply()
                 }
 
-                startActivity(Intent(this, BaseActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Username atau Password Salah", Toast.LENGTH_SHORT).show()
